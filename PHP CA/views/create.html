@@ -1,0 +1,56 @@
+<?php require 'views/header.html'; ?>
+
+<h2>Create New Todo</h2>
+
+<?php if (!empty($success)): ?>
+<article
+  style="background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724"
+>
+  <p>
+    <strong>Success!</strong>
+    <?= htmlspecialchars($success) ?>
+  </p>
+  <a href="index.php" role="button">View All Todos</a>
+</article>
+<?php endif; ?>
+
+<?php if (!empty($error)): ?>
+<article
+  style="background-color: #f8d7da; border: 1px solid #f5c6cb; color: #721c24"
+>
+  <p>
+    <strong>Error!</strong>
+    <?= htmlspecialchars($error) ?>
+  </p>
+</article>
+<?php endif; ?>
+
+<form method="POST" action="create.php">
+  <fieldset>
+    <label>
+      Description *
+      <input
+        name="title"
+        type="text"
+        placeholder="Enter todo description"
+        value="<?= isset($title) ? htmlspecialchars($title) : '' ?>"
+        required
+      />
+    </label>
+
+    <label>
+      Due Date *
+      <input
+        name="due_date"
+        type="date"
+        value="<?= isset($due_date) ? htmlspecialchars($due_date) : '' ?>"
+        required
+      />
+    </label>
+
+    <button type="submit" name="submit">Create Todo</button>
+    <a href="index.php" role="button" class="secondary">Cancel</a>
+  </fieldset>
+</form>
+
+<?php require 'views/footer.html'; ?>
